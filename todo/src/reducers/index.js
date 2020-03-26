@@ -12,7 +12,7 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
-			return [...state.todos, action.payload]
+			return { todos: [...state.todos, action.payload] }
 
 		case TOGGLE_TODO:
 			return state.todos.map((todo, index) => {
