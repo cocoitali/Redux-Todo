@@ -20,9 +20,9 @@ export const toggleTodo = index => {
   };
 };
 
-export const deleteTodo = index => {
+export const deleteTodo = () => {
   return {
   type: DELETE_TODO,
-  payload: index,
+  //no payload
   };
 }
