@@ -13,24 +13,17 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
 			return [...state.todos, action.payload]
-		
-		case TOGGLE_TODO:
-			return {
-				...state,
-				todos: state.todos.map(
-					(todo, index) => {
-						if (index === action.payload) {
-							return { ...todo, completed: !todo.completd }
-						} else {
-							return todo
-						}
-					}
-					// index === action.payload
-					//   ? { ...todo, completed: !todo.completed }
-					//   : todo
-				)
-			}
 
+		case TOGGLE_TODO:
+			return state.todos.map((todo, index) => {
+				if (index === action.payload) {
+					return { ...todo, completed: !todo.completd }
+				}
+				return todo
+			})
+
+		case DELETE_TODO:
+			return state.todos.filter(todo => !todo.completed)
 		default:
 			return state
 	}
