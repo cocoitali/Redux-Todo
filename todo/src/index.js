@@ -1,23 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import todoReducer from "./reducers";
-import TodoContainer from "./Containers/TodoContainer";
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const store = createStore(todoReducer);
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import logger from 'redux-logger'
+import todoReducer from './reducers'
+import TodoContainer from './Containers/TodoContainer'
+
+const store = createStore(todoReducer, applyMiddleware(logger))
 
 const App = () => {
-  return (
-    <div>
-      <TodoContainer />
-    </div>
-  );
-};
-const rootElement = document.getElementById("root");
+	return (
+		<div>
+			<TodoContainer />
+		</div>
+	)
+}
+const rootElement = document.getElementById('root')
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  rootElement
-);
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	rootElement
+)
